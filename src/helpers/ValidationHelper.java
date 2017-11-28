@@ -7,6 +7,10 @@
 * Description: Class that holds regex functions.
 */
 package helpers;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import utilities.DatabaseAccess;
 
 public final class ValidationHelper {
 	
@@ -20,6 +24,41 @@ public final class ValidationHelper {
 	
 	public static boolean isAlphabetic(String str) {
 		return str.matches( "[A-Z][a-zA-Z]*" );
+	}
+  
+  public static boolean isAlphabeticAndNumerical(String input){
+		return input.matches( "[a-zA-Z0-9 ]*" );
+	}
+  
+  public static boolean length(int input){
+		if(input < 30)
+			return true;
+		else
+			return false;
+	}
+  
+  public static boolean compare(String input){
+		//Conn to DB and set up Query
+		try{
+		java.sql.Connection connect = DatabaseAccess.connectDataBase();
+		String queryString = "Select name from groups";
+		Statement st =  connect.createStatement();
+		ResultSet resSet = st.executeQuery(queryString);
+		
+			while(resSet.next()){
+				if(resSet.getString(1).equals(input)){
+						connect.close();
+						return false;
+				}
+			}
+		connect.close();
+		}
+		catch(Exception e)
+		{
+			System.err.println("Something unexpected happened...");
+			System.err.println(e.getMessage());
+		}
+		return true;
 	}
 	
 	public static boolean isEmail(String str) {
