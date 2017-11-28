@@ -19,7 +19,7 @@ public final class ValidationHelper {
 	}
 	
 	public static boolean isAlphabetic(String str) {
-		return str.matches( "[A-Z][a-zA-Z]*" );
+		return str.matches( "[A-Z][a-zA-Z ]*" );
 	}
 	
 	public static boolean isEmail(String str) {
@@ -33,6 +33,10 @@ public final class ValidationHelper {
 		} catch(Exception e) {
 			return false;
 		}
+	}
+	
+	public static boolean isAlphanumeric(String input){
+		return input.matches( "[A-Z][a-zA-Z0-9 ]*" );
 	}
 	
 	
