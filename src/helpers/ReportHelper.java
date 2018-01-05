@@ -21,6 +21,54 @@ public final class ReportHelper {
 		String timeStamp = new SimpleDateFormat("MM / dd / yyyy").format(Calendar.getInstance().getTime());
 		return timeStamp;
 	}
+	
+	public static void updateCriteriaGrade(Integer reportID, String[] criteria, String[] critID) {
+		try {
+			Connection connect = DatabaseAccess.connectDataBase();
+			
+			String query = "UPDATE criteria_grade "
+							+ "SET grade = ? "
+							+ "WHERE report_id = ? AND criteria_id = ? ";
+			Integer count = 0;
+			for(String crit : criteria) {
+				PreparedStatement stmt = connect.prepareStatement(query);
+				stmt.setInt(1, Integer.parseInt(crit));
+				stmt.setInt(2, reportID);
+				stmt.setInt(3, Integer.parseInt(critID[count]));
+				stmt.executeUpdate();
+				count++;
+			}
+		}catch(Exception e) {
+			System.out.println("Error in updateCritGrade "+e);
+		}
+	}
+	public static void updateReportComments(Integer reportID, String comment, Integer section) {
+		try {
+			Connection connect = DatabaseAccess.connectDataBase();
+			String  query = "";
+			if(section == 1) {
+				query = "UPDATE report "
+						+ "SET section_1_comment = ? "
+						+ "WHERE report_id = ? ";
+			} else if (section == 2) {
+				query = "UPDATE report"
+						+ " SET section_2_comment = ? "
+						+ " WHERE report_id = ? ";
+			} else if (section == 3) {
+				query = "UPDATE report"
+						+ " SET section_3_comment = ? "
+						+ " WHERE report_id = ? ";
+			}
+				PreparedStatement stmt = connect.prepareStatement(query);
+				stmt.setString(1, comment);
+				stmt.setInt(2, reportID);
+				stmt.executeUpdate();
+				
+		}catch(Exception e) {
+			//System.out.println("Error in updateComments "+e);
+		}
+	}
+	
 	public static ArrayList<Integer> insertCriteria(String[] criteria){
 		ArrayList<Integer> criteriaIds = new ArrayList<>();
 		try {
@@ -141,7 +189,7 @@ public final class ReportHelper {
 			res.close();
 			connect.close();
 		}catch(Exception e) {
-			System.out.println("exception in insert insertReport" + e);
+			//System.out.println("exception in insert insertReport" + e);
 		}
 		return reportID;
 	}
@@ -164,7 +212,7 @@ public final class ReportHelper {
 			connect.close();
 			
 		}catch(Exception e) {
-			System.out.println("exception in insert insertCriteriaGrade" + e);
+			//System.out.println("exception in insert insertCriteriaGrade" + e);
 		}
 	}
 	
@@ -446,7 +494,7 @@ public final class ReportHelper {
 			rs.close();
 			connect.close();
 		}catch(Exception e) {
-			System.out.println("exception in getReportDetails" + e);
+			//System.out.println("exception in getReportDetails" + e);
 		}
 		return values;
 	}
@@ -461,7 +509,6 @@ public final class ReportHelper {
 			PreparedStatement stmt = connect.prepareStatement(query);
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
-				System.out.println(Integer.toString(rs.getInt(1))+ " " + rs.getString(2));
 				tempList.put(Integer.toString(rs.getInt(1)), rs.getString(2));
 			}
 			rs.close();
@@ -481,8 +528,7 @@ public final class ReportHelper {
 			
 			PreparedStatement stmt = connect.prepareStatement(query);
 			ResultSet rs = stmt.executeQuery();
-			while(rs.next()) {
-				System.out.println(Integer.toString(rs.getInt(1))+ " " + rs.getString(2));
+			while(rs.next()) {				
 				tempList.put(Integer.toString(rs.getInt(1)), rs.getString(2));
 			}
 			rs.close();

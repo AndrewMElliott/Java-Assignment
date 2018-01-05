@@ -51,31 +51,30 @@ public class ReportTemplate extends HttpServlet {
 		request.setAttribute("departmentList", depList);
 		
 		boolean formIsValid = true;
-		
+				
 		String templateName = request.getParameter("templateName");
 		if(!ValidationHelper.isNotNullOrEmpty(templateName)) {
-			//request.setAttribute("errorMessageTemplateName", "Section Name cannot be empty");
+			request.setAttribute("errTemplateName", "Template Name cannot be empty");
 			formIsValid = false;
 		}
 		String sectionOne = request.getParameter("sectionOne");
 		if(!ValidationHelper.isNotNullOrEmpty(sectionOne)) {
-			//request.setAttribute("errorMessageTemplateName", "Section Name cannot be empty");
+			request.setAttribute("errSectionOne", "Section Name cannot be empty");
 			formIsValid = false;
 		}
 		String sectionTwo = request.getParameter("sectionTwo");
 		if(!ValidationHelper.isNotNullOrEmpty(sectionTwo)) {
-			//request.setAttribute("errorMessageTemplateName", "Section Name cannot be empty");
+			request.setAttribute("errSectionTwo", "Section Name cannot be empty");
 			formIsValid = false;
 		}
 		String sectionThree = request.getParameter("sectionThree");
 		if(!ValidationHelper.isNotNullOrEmpty(sectionThree)) {
-			//request.setAttribute("errorMessageTemplateName", "Section Name cannot be empty");
+			request.setAttribute("errSectionThree", "Section Name cannot be empty");
 			formIsValid = false;
 		}
 		String department = request.getParameter("selectDepartment");
-		if (!ValidationHelper.isNotNullOrEmpty(department)) {
-			// Set error message letting user know to select a option
-			//request.setAttribute("errorMessage7", "Please select a department");
+		if (!ValidationHelper.isNotNullOrEmpty(department)) {			
+			request.setAttribute("errDepartSelect", "Please select a department");
 			formIsValid = false;
 		}
 		if (formIsValid == false) {

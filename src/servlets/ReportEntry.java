@@ -60,15 +60,7 @@ public class ReportEntry extends HttpServlet {
 			String[] sectionOneCriteriaValues 	= request.getParameterValues("section_1_criteria_value");
 			String[] sectionTwoCriteriaValues 	= request.getParameterValues("section_2_criteria_value");
 			String[] sectionThreeCriteriaValues = request.getParameterValues("section_3_criteria_value");
-			for(String com : sectionOneCriteriaValues) {
-				System.out.println("Section 1: " + com);
-			}
-			for(String com : sectionTwoCriteriaValues) {
-				System.out.println("Section 2: " + com);
-			}
-			for(String com : sectionThreeCriteriaValues) {
-				System.out.println("Section 3: " + com);
-			}
+			
 			Boolean formValid = true;
 			
 			if(reportTitle.trim().equals("") ) {
@@ -91,8 +83,7 @@ public class ReportEntry extends HttpServlet {
 				request.getRequestDispatcher("/WEB-INF/jsp/reports/reports_entry.jsp").forward(request, response);
 			}
 		}
-			
-		
+				
 	}
 	
 	private void getFormData(HttpServletRequest request, HttpServletResponse response, Integer tempID) {

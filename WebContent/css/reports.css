@@ -11,6 +11,21 @@
 	margin:0 auto;
  	width:400px; 
 }
+.errorMsg {
+	color: red;
+	
+}
+.grade-container{
+	margin:0 auto;
+	width: 200px;
+}
+.grade-counter{
+	text-align:center;
+	width:50px;
+	border: 1px solid rgba(255, 255, 255, 0.7);
+	box-shadow: 0 3px 7px rgba(0, 0, 0, 0.2);
+	
+}
 .criteriaListDiv{
 	vertical-align:top;
 	display:inline-block;
