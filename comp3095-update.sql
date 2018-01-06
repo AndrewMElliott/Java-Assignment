@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 04, 2018 at 03:17 PM
+-- Generation Time: Jan 06, 2018 at 08:41 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -70,34 +70,11 @@ CREATE TABLE `criteria` (
 --
 
 INSERT INTO `criteria` (`criteria_id`, `criteria_name`) VALUES
-(77, 'Time'),
-(78, 'Speed'),
-(79, 'Communication'),
-(80, 'Planning'),
-(81, 'Looks'),
-(82, 'Skill'),
-(83, 'Hygiene'),
-(84, 'Hair'),
-(85, 'Attire'),
-(86, 'Attendance'),
-(87, 'Shoes'),
-(88, 'crit 1'),
-(89, 'crit 2'),
-(90, 'crit 3'),
-(91, 'crit 4'),
-(92, 'crit 5'),
-(93, 'crit 1'),
-(94, 'crit 2'),
-(95, 'crit 3'),
-(96, 'crit 1'),
-(97, 'crit 2'),
-(98, 'crit 3'),
-(99, 'Debits'),
-(100, 'Credits'),
-(101, 'Receivables'),
-(102, 'Depreciation'),
-(103, 'ContraDep'),
-(104, 'Expenses');
+(153, 'Attendance'),
+(154, 'Tardiness'),
+(155, 'Speed'),
+(156, 'Correctness'),
+(157, 'Reliability');
 
 -- --------------------------------------------------------
 
@@ -117,12 +94,11 @@ CREATE TABLE `criteria_grade` (
 --
 
 INSERT INTO `criteria_grade` (`report_id`, `criteria_id`, `grade`) VALUES
-(21, 99, 1),
-(21, 100, 2),
-(21, 101, 3),
-(21, 102, 1),
-(21, 103, 2),
-(21, 104, 1);
+(29, 153, 3),
+(29, 154, 4),
+(29, 155, 3),
+(29, 156, 4),
+(29, 157, 3);
 
 -- --------------------------------------------------------
 
@@ -141,34 +117,11 @@ CREATE TABLE `criteria_section` (
 --
 
 INSERT INTO `criteria_section` (`criteria_id`, `section_id`) VALUES
-(77, 41),
-(78, 41),
-(79, 41),
-(80, 41),
-(81, 41),
-(82, 42),
-(83, 42),
-(84, 42),
-(85, 43),
-(86, 43),
-(87, 43),
-(88, 44),
-(89, 44),
-(90, 44),
-(91, 44),
-(92, 44),
-(93, 45),
-(94, 45),
-(95, 45),
-(96, 46),
-(97, 46),
-(98, 46),
-(99, 47),
-(100, 47),
-(101, 47),
-(102, 48),
-(103, 48),
-(104, 49);
+(153, 83),
+(154, 83),
+(155, 84),
+(156, 84),
+(157, 85);
 
 -- --------------------------------------------------------
 
@@ -216,15 +169,13 @@ CREATE TABLE `employee` (
 
 INSERT INTO `employee` (`employee_id`, `firstname`, `lastname`, `employee_number`, `email`, `hire_date`, `job_position`, `department_id`) VALUES
 (1, 'Jeff', 'Boye', 123456, 'fake@email.ca', '2017-10-09', 'tester', 1),
-(3, 'hello', 'mynameis', 98765, 'dsad@dsa.ca', '2008-01-01', 'Accountant', 1),
-(12, 'Andrew', 'Elliott', 435678, 'dsadsa@dsad.ca', '2005-01-01', 'Junior Programmer', 1),
 (13, 'Andrew', 'Elliott', 435678, 'dsadsa@dsad.ca', '2005-01-01', 'Junior Programmer', 1),
-(14, 'Andrew', 'Elliott', 889876, 'dsa@dsa.ca', '2005-01-01', 'Senior Programmer', 2),
-(15, 'jeff', 'boi', 987456, 'dsa@da.ca', '2005-01-01', 'Senior Programmer', 2),
 (16, 'Billy Dee', 'Williams', 98723, 'ddsad@dsa.ca', '2005-01-01', 'Junior Programmer', 2),
 (18, 'Jeff', 'O', 990877, 'dsadsa@dsad.ca', '2005-01-01', 'Junior Programmer', 3),
 (19, 'Roman', 'Markman', 784839, 'fdsf@da.ca', '2006-01-01', 'Junior Programmer', 3),
-(20, 'Kevin', 'Lei', 762364, 'fdsf@dsad.ca', '2006-01-01', 'Junior Programmer', 3);
+(20, 'Kevin', 'Lei', 762364, 'fdsf@dsad.ca', '2006-01-01', 'Junior Programmer', 3),
+(27, 'Jullian', 'Sy', 982736, 'dsa@dsa.ca', '2005-01-01', 'Junior Programmer', 3),
+(28, 'Aron', 'Elliott', 284732, 'dsad@dsa.ca', '2005-01-01', 'It Director', 3);
 
 -- --------------------------------------------------------
 
@@ -243,16 +194,8 @@ CREATE TABLE `employee_group` (
 --
 
 INSERT INTO `employee_group` (`employee_id`, `group_id`) VALUES
-(1, 1),
-(1, 4),
-(3, 5),
-(13, 6),
-(14, 2),
-(14, 8),
-(15, 3),
-(16, 7),
-(16, 9),
-(20, 10);
+(27, 23),
+(28, 23);
 
 -- --------------------------------------------------------
 
@@ -272,16 +215,7 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`group_id`, `name`, `department_id`) VALUES
-(1, 'Test Group 1', 1),
-(2, 'Doofs', 2),
-(3, 'Freds', 2),
-(4, 'Doof2', 1),
-(5, 'Blakes', 1),
-(6, 'The Whats', 1),
-(7, 'the whos', 2),
-(8, '111111', 2),
-(9, 'the doofs maloofs', 2),
-(10, 'Accounting Tyrants', 3);
+(23, 'Accounting Group', 3);
 
 -- --------------------------------------------------------
 
@@ -306,7 +240,7 @@ CREATE TABLE `report` (
 --
 
 INSERT INTO `report` (`report_id`, `template_id`, `report_name`, `target_name`, `report_date`, `section_1_comment`, `section_2_comment`, `section_3_comment`) VALUES
-(21, 13, 'Kevin Report', 'Lei, Kevin', '2018-01-04', 'testt', 'testtt', 'testttt');
+(29, 25, 'Jullian Report', 'Sy, Jullian', '2018-01-03', 'Comments', 'More Comments', 'Lots of Comments');
 
 -- --------------------------------------------------------
 
@@ -325,15 +259,9 @@ CREATE TABLE `section` (
 --
 
 INSERT INTO `section` (`section_id`, `section_name`) VALUES
-(41, 'Part 1'),
-(42, 'Part 2'),
-(43, 'Part 3'),
-(44, 'Section 1'),
-(45, 'section 2'),
-(46, 'section 3'),
-(47, 'Part I'),
-(48, 'Part II'),
-(49, 'Part III');
+(83, 'Section 1'),
+(84, 'Section 2'),
+(85, 'Section 3');
 
 -- --------------------------------------------------------
 
@@ -357,9 +285,7 @@ CREATE TABLE `template` (
 --
 
 INSERT INTO `template` (`template_id`, `department_id`, `date`, `template_name`, `section_1`, `section_2`, `section_3`) VALUES
-(11, 1, '2018-01-04', 'QA Report', 41, 42, 43),
-(12, 2, '2018-01-04', 'Gaming', 44, 45, 46),
-(13, 3, '2018-01-04', 'Accounting Report', 47, 48, 49);
+(25, 3, '2018-01-06', 'Accounting Report 2018', 83, 84, 85);
 
 -- --------------------------------------------------------
 
@@ -493,7 +419,7 @@ ALTER TABLE `attendance`
 -- AUTO_INCREMENT for table `criteria`
 --
 ALTER TABLE `criteria`
-  MODIFY `criteria_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `criteria_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
 
 --
 -- AUTO_INCREMENT for table `department`
@@ -505,31 +431,31 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `employee_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `employee_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `group_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `group_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
-  MODIFY `report_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `report_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `section`
 --
 ALTER TABLE `section`
-  MODIFY `section_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `section_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT for table `template`
 --
 ALTER TABLE `template`
-  MODIFY `template_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `template_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `users`
