@@ -104,7 +104,7 @@
 					<span>Report Title</span><input type="text" name="reportTitle">
 					<span>Date</span><input type="date" name="reportDate" >
 					<div>
-						<span>Report Type</span>
+						<div>Report Type</div>
 						<input type="radio" id="groupSelect" name="reportType" value="group">Group<br>
 						<input type="radio" id="employeeSelect" name="reportType" value="employee" checked>Employee
 					</div>
