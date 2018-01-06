@@ -151,7 +151,7 @@ public class Login extends HttpServlet {
 				connect.close();
 			} catch (Exception e) {
 				// Error logging to the console.
-				System.err.println("Exception: " + e.getMessage());
+				System.out.println("Exception: " + e.getMessage());
 				
 				// Return the user to the login page as we do not want users seeing exception messages,
 				// nor receiving a blank page due to an error which has occurred in code.

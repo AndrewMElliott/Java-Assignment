@@ -46,7 +46,7 @@ public class ReportsView extends HttpServlet {
 		Integer reportID = 0;
 		Map<String,String> tempList = ReportHelper.getTemplateList();
 		request.setAttribute("templateList", tempList);
-				
+			
 		if(request.getParameter("formselect").equals("selectTemplate")) {
 			tempID = Integer.parseInt(request.getParameter("selectTemplate"));
 			Map<String,String> reports = ReportHelper.getReportTitle(tempID);

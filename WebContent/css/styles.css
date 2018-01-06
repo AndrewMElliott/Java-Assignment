@@ -74,7 +74,7 @@ input[type=reset]:active, input[type=reset]:focus {
  **/
 .container {
 	margin: 62px 100px;
-	min-width: 700px;
+	min-width: 850px;
 	padding: 50px;
 	background: rgba(225, 225, 225, 0.85);
 	border: 1px solid rgba(255, 255, 255, 0.7);
@@ -84,7 +84,7 @@ input[type=reset]:active, input[type=reset]:focus {
 }
 .overflow{
 	max-height: 600px;
-	max-width:800px;
+	
 	overflow-y:scroll;
 }
 .container > * {

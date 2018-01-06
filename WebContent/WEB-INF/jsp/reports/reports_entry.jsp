@@ -20,7 +20,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/jQuery/jquery-3.2.0.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reports.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/styles.css"/>
-
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/modal.css">
 <title><%= title %></title>
 </head>

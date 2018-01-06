@@ -17,3 +17,17 @@ div.errorMsg {
 	color: red;
 	margin: 0;
 }
+table{
+	border-collapse:collapse;
+	
+}
+tbody td, tbody th{
+	text-align:center;
+	border-bottom:black 1px solid;
+	width:150px;
+	padding-left:5px;
+	padding-right:5px;
+}
+tbody tr:nth-child(odd) {
+  background: #8baed2b8;
+}
