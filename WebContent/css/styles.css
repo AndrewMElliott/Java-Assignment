@@ -87,6 +87,10 @@ input[type=reset]:active, input[type=reset]:focus {
 	
 	overflow-y:scroll;
 }
+.overflow-full{
+	max-width:900px;
+	overflow:scroll;
+}
 .container > * {
 	animation: slide-up ease-in-out 0.5s;
 }
