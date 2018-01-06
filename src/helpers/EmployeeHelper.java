@@ -71,7 +71,8 @@ public final class EmployeeHelper {
 				
 				Employee employee = new Employee(rs.getString("firstname"),   rs.getString("lastname"),
 												 rs.getInt("employee_number"),rs.getDate("hire_date"),
-												 rs.getString("email"),       rs.getString("job_position"));
+												 rs.getString("email"),       rs.getString("job_position"),
+												 rs.getInt("employee_id"));
 				employees.add(employee);
 			}
 			rs.close();

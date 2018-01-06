@@ -10,8 +10,10 @@ public class Employee {
 	private Date hireDate;
 	private String email;
 	private String jobPos;
+	private Integer eId;
 	
-	public Employee(String firstName, String lastName, int employeeNumber, Date dateOfHire, String Eemail, String jobPosition) {
+	
+	public Employee(String firstName, String lastName, int employeeNumber, Date dateOfHire, String Eemail, String jobPosition, Integer eId) {
 		// TODO Auto-generated constructor stub
 		fName = firstName;
 		lName = lastName;
@@ -19,6 +21,10 @@ public class Employee {
 		hireDate = dateOfHire;
 		email = Eemail;
 		jobPos = jobPosition;
+		this.eId = eId;
+	}
+	public Integer geteId() {
+		return eId;
 	}
 	public String getfName() {
 		return fName;

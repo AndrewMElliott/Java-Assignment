@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 06, 2018 at 08:41 AM
+-- Generation Time: Jan 06, 2018 at 12:56 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -37,8 +37,19 @@ DROP TABLE IF EXISTS `attendance`;
 CREATE TABLE `attendance` (
   `atten_id` int(10) UNSIGNED NOT NULL,
   `department_id` int(10) UNSIGNED NOT NULL,
-  `date` date NOT NULL
+  `date` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `attendance`
+--
+
+INSERT INTO `attendance` (`atten_id`, `department_id`, `date`) VALUES
+(1, 3, '2018-01-04'),
+(2, 3, '2018-01-04'),
+(3, 3, '2018-01-01'),
+(4, 2, ''),
+(5, 2, '2018-01-02');
 
 -- --------------------------------------------------------
 
@@ -52,6 +63,24 @@ CREATE TABLE `atten_employee` (
   `employee_id` int(10) UNSIGNED NOT NULL,
   `attended` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `atten_employee`
+--
+
+INSERT INTO `atten_employee` (`atten_id`, `employee_id`, `attended`) VALUES
+(2, 18, 1),
+(2, 19, 0),
+(2, 20, 0),
+(2, 27, 0),
+(2, 28, 0),
+(3, 18, 0),
+(3, 19, 1),
+(3, 20, 1),
+(3, 27, 1),
+(3, 28, 1),
+(4, 16, 1),
+(5, 16, 1);
 
 -- --------------------------------------------------------
 
@@ -413,7 +442,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `atten_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `atten_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `criteria`
